@@ -174,8 +174,7 @@ const kontakt = head({ title: 'Kontakt – Byggd av Max', desc: `Ring ${PHONE} e
   </div>
 </section>
 
-${cta.replace('<p class="label">Kontakt</p>
-    ', '').replace('<h2 id="cta-rubrik">Har du ett företag som förtjänar en <em>bättre</em> hemsida?</h2>', '<h2 id="cta-rubrik">Enklast är att <em>ringa</em> eller mejla.</h2>')}
+${cta.replace('<p class="label">Kontakt</p>\n    ', '').replace('<h2 id="cta-rubrik">Har du ett företag som förtjänar en <em>bättre</em> hemsida?</h2>', '<h2 id="cta-rubrik">Enklast är att <em>ringa</em> eller mejla.</h2>')}
 <section class="section" aria-labelledby="med" style="border-top:0">
   <div class="wrap">
     <div class="sec-head">
