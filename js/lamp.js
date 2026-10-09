@@ -38,7 +38,25 @@ function start() {
   model.position.y = -3; pivot.add(model);
   model.traverse((o) => { if (o.isMesh) o.material.envMapIntensity *= 0.95; });
   const bulbLight = new THREE.PointLight(0xffb060, 1.6, 3, 1.6); bulbLight.position.set(0, -0.02, 0); model.add(bulbLight);
-  const filament = model.userData.sculptRuntime?.meshes?.filament;
+  const meshes = model.userData.sculptRuntime?.meshes ?? {};
+  const filament = meshes.filament;
+  const bulb = meshes.bulb;
+  if (bulb) {
+    // Ogenomskinligt bärnstensglas med inre glöd: renderas likadant oavsett laddningsordning och enhet
+    bulb.material.transmission = 0;
+    bulb.material.transparent = false;
+    bulb.material.opacity = 1;
+    bulb.material.emissiveIntensity = 0.7;
+    bulb.material.needsUpdate = true;
+  }
+  const glow = stage.querySelector('.stage__fallback span');
+  const bulbWorld = new THREE.Vector3();
+  function placeGlow() {
+    if (!glow || !bulb) return;
+    bulb.getWorldPosition(bulbWorld).project(camera);
+    glow.style.left = ((bulbWorld.x + 1) / 2 * 100) + '%';
+    glow.style.top = ((1 - bulbWorld.y) / 2 * 100) + '%';
+  }
   const baseEmissive = filament ? filament.material.emissiveIntensity : 1;
 
   const camera = new THREE.PerspectiveCamera(28, 0.8, 0.05, 20);
@@ -51,10 +69,12 @@ function start() {
     // Lampans skärm (diameter 1) ska fylla cirka 74 % av bredden
     const visibleW = camera.aspect < 0.75 ? 1.18 : 1.35, visibleH = Math.max(visibleW / camera.aspect, 1.6);
     const dist = (visibleH / 2) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    camera.position.set(0, 0.12, dist);
+    target.y = camera.aspect < 0.75 ? 0.5 : 0.3;
+    camera.position.set(0, target.y - 0.18, dist);
     camera.lookAt(target);
     camera.updateProjectionMatrix();
     render(performance.now());
+    placeGlow();
   }
 
   function render(t) {
