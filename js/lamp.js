@@ -16,7 +16,7 @@ function start() {
   }
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.2;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
   stage.appendChild(renderer.domElement);
@@ -36,7 +36,7 @@ function start() {
   const pivot = new THREE.Group(); pivot.position.y = 3; scene.add(pivot);
   const model = createBrassPendantLampModel({ castShadow: false, receiveShadow: false });
   model.position.y = -3; pivot.add(model);
-  model.traverse((o) => { if (o.isMesh) o.material.envMapIntensity *= 0.5; });
+  model.traverse((o) => { if (o.isMesh) o.material.envMapIntensity *= 0.95; });
   const bulbLight = new THREE.PointLight(0xffb060, 1.6, 3, 1.6); bulbLight.position.set(0, -0.02, 0); model.add(bulbLight);
   const filament = model.userData.sculptRuntime?.meshes?.filament;
   const baseEmissive = filament ? filament.material.emissiveIntensity : 1;
