@@ -33,7 +33,7 @@ ${lamp ? `<script type="importmap">{"imports":{"three":"https://unpkg.com/three@
   <div class="bar">
     <a class="wordmark" href="/">Byggd av Max</a>
     <nav class="nav" aria-label="Huvudmeny">
-      <a href="/arbeten/"${path === 'arbeten' ? ' aria-current="page"' : ''}>Arbeten</a>
+      <a href="/referenser/"${path === 'referenser' ? ' aria-current="page"' : ''}>Referenser</a>
       <a href="/kontakt/"${path === 'kontakt' ? ' aria-current="page"' : ''}>Kontakt</a>
           </nav>
   </div>
@@ -74,7 +74,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <span>© ${year} Byggd av Max</span>
-    <nav aria-label="Sidfot"><a href="/arbeten/">Arbeten</a><a href="/kontakt/">Kontakt</a><a href="tel:${TEL}">${PHONE}</a></nav>
+    <nav aria-label="Sidfot"><a href="/referenser/">Referenser</a><a href="/kontakt/">Kontakt</a><a href="tel:${TEL}">${PHONE}</a></nav>
   </div>
 </footer>
 <script>
@@ -132,10 +132,10 @@ const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag b
 </section>
 ` + foot;
 
-const arbeten = head({ title: 'Arbeten | Byggd av Max', desc: 'Hemsidor som jag har byggt åt företag.', path: 'arbeten' }) + `
+const arbeten = head({ title: 'Referenser | Byggd av Max', desc: 'Referenser: hemsidor som jag har byggt åt företag.', path: 'referenser' }) + `
 <section class="page-head">
   <div class="wrap">
-    <h1 class="rise">Arbeten</h1>
+    <h1 class="rise">Referenser</h1>
     <p class="lead rise d1">Här samlar jag hemsidor jag har gjort åt företag, med vad uppdraget var och hur resultatet blev.</p>
   </div>
 </section>
@@ -144,14 +144,14 @@ const arbeten = head({ title: 'Arbeten | Byggd av Max', desc: 'Hemsidor som jag 
     <div class="empty">
       <div class="empty__visual glass reveal" aria-hidden="true"><span>Under arbete</span></div>
       <div class="empty__text glass reveal">
-        <h2 id="snart">De första exemplen kommer snart</h2>
+        <h2 id="snart">De första referenserna kommer snart</h2>
         <p>Flera sidor är på gång just nu. Hör av dig om du vill se exempel som passar ditt företag redan i dag.</p>
         <a class="btn btn--solid" href="/kontakt/">Kontakta mig</a>
       </div>
     </div>
-    <!-- MALL för ett arbete (ta bort .empty ovan när det första läggs in):
+    <!-- MALL för en referens (ta bort .empty ovan när det första läggs in):
     <article class="work glass">
-      <img src="/img/arbeten/NAMN-desktop.webp" alt="Startsidan för NAMN" width="1440" height="900" loading="lazy">
+      <img src="/img/referenser/NAMN-desktop.webp" alt="Startsidan för NAMN" width="1440" height="900" loading="lazy">
       <div><h2 class="h2">Företagsnamn</h2><p class="lead">Bransch, ort och år. Vad uppdraget var i två meningar.</p><a class="btn" href="https://..." target="_blank" rel="noopener">Besök sidan</a></div>
     </article>
     -->
@@ -195,8 +195,8 @@ ${contactPanel({ title: 'Enklast är att ringa', text: 'Eller skicka ett mejl om
 ` + foot;
 
 writeFileSync('index.html', home);
-mkdirSync('arbeten', { recursive: true });
-writeFileSync('arbeten/index.html', arbeten);
+mkdirSync('referenser', { recursive: true });
+writeFileSync('referenser/index.html', arbeten);
 mkdirSync('kontakt', { recursive: true });
 writeFileSync('kontakt/index.html', kontakt);
 writeFileSync('404.html', head({ title: 'Sidan finns inte | Byggd av Max', desc: 'Sidan finns inte.', path: '' }) + `
