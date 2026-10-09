@@ -95,6 +95,13 @@ img { max-width: 100%; display: block; }
 .stage__fallback span { position: absolute; left: 50%; top: 66%; width: 70%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 196, 120, .55), rgba(212, 163, 90, .18) 38%, transparent 68%); }
 .stage.is-live .stage__fallback { opacity: .7; }
 
+/* Startsidan: en skärm, bara kontakt */
+.hero--home { min-height: calc(100dvh - 76px - 110px); display: grid; align-items: center; padding-block: clamp(24px, 4vw, 56px); }
+.hero--home .lead { margin-bottom: 28px; }
+.ways--hero { max-width: 520px; }
+.ways--hero .way { background: linear-gradient(140deg, var(--glass-strong), rgba(243, 237, 230, .02)), var(--glass); }
+.hero--home + .site-foot, main:has(.hero--home) + .site-foot { margin-top: 0; }
+
 /* Bento */
 .section { padding-block: clamp(72px, 10vw, 140px); }
 .section-head { max-width: 40rem; margin-bottom: clamp(36px, 5vw, 56px); }
@@ -204,4 +211,15 @@ img { max-width: 100%; display: block; }
   .way .acts { grid-column: 1 / -1; }
   .way a.value { font-size: 18px; overflow-wrap: normal; word-break: normal; }
   .steps li { grid-template-columns: 44px minmax(0, 1fr); padding: 22px; }
+}
+
+/* Startsidan på mindre skärmar */
+@media (max-width: 960px) {
+  .hero--home { min-height: 0; }
+  .hero--home .stage { margin-top: 0; max-width: 340px; }
+}
+@media (max-width: 640px) {
+  .ways--hero .way { grid-template-columns: auto minmax(0, 1fr) auto; padding: 16px; gap: 14px; }
+  .ways--hero .way .acts { grid-column: auto; }
+  .ways--hero .icon-btn { width: 40px; height: 40px; }
 }

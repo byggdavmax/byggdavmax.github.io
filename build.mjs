@@ -34,9 +34,8 @@ ${lamp ? `<script type="importmap">{"imports":{"three":"https://unpkg.com/three@
     <a class="wordmark" href="/">Byggd av Max</a>
     <nav class="nav" aria-label="Huvudmeny">
       <a href="/arbeten/"${path === 'arbeten' ? ' aria-current="page"' : ''}>Arbeten</a>
-      <a class="opt" href="/#sa-gar-det-till">Så går det till</a>
       <a href="/kontakt/"${path === 'kontakt' ? ' aria-current="page"' : ''}>Kontakt</a>
-      <a class="btn btn--solid" href="${path === 'kontakt' ? '#kontakt' : '/kontakt/'}">Kontakta mig</a>
+      ${path === 'home' ? '' : `<a class="btn btn--solid" href="${path === 'kontakt' ? '#kontakt' : '/kontakt/'}">Kontakta mig</a>`}
     </nav>
   </div>
 </header>
@@ -102,16 +101,29 @@ const foot = `</main>
 </html>
 `;
 
-const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag bygger lugna, snygga och snabba hemsidor för lokala företag. Ring ${PHONE} eller mejla ${MAIL}.`, path: 'home', lamp: true }) + `
-<section class="hero">
+const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag bygger hemsidor för företag. Ring ${PHONE} eller mejla ${MAIL}.`, path: 'home', lamp: true }) + `
+<section class="hero hero--home">
   <div class="wrap">
     <div>
       <p class="eyebrow rise">Hemsidor för företag</p>
       <h1 class="rise d1">En hemsida som känns som <em>ditt</em> företag</h1>
-      <p class="lead rise d2">Jag bygger lugna, snygga och snabba hemsidor för restauranger, gårdar, butiker och andra lokala företag.</p>
-      <div class="btn-row rise d3">
-        <a class="btn btn--solid" href="/kontakt/">Kontakta mig</a>
-        <a class="btn btn--glass" href="/arbeten/">Se arbeten</a>
+      <p class="lead rise d2">Vill du ha en egen? Ring, sms:a eller mejla, så hörs vi.</p>
+      <div class="ways ways--hero rise d3">
+        <div class="way glass">
+          <i class="ph-light ph-phone" aria-hidden="true"></i>
+          <div><span class="label">Ring eller sms:a</span><a class="value" href="tel:${TEL}">${PHONE}</a></div>
+          <div class="acts">
+            <a class="icon-btn" href="sms:${TEL}" aria-label="Skicka sms"><i class="ph-light ph-chat-circle-text" aria-hidden="true"></i></a>
+            <button class="icon-btn" type="button" data-copy="${PHONE}" aria-label="Kopiera telefonnummer"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="way glass">
+          <i class="ph-light ph-envelope-simple" aria-hidden="true"></i>
+          <div><span class="label">Mejla</span><a class="value" href="mailto:${MAIL}?subject=Ny%20hemsida">${MAIL}</a></div>
+          <div class="acts">
+            <button class="icon-btn" type="button" data-copy="${MAIL}" aria-label="Kopiera mejladress"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="stage rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
@@ -119,59 +131,7 @@ const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag b
     </div>
   </div>
 </section>
-
-<section class="section" aria-labelledby="ingar">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2 class="h2" id="ingar">Det här ingår</h2>
-      <p class="lead">Allt som behövs för en sida som syns. Du behöver inte kunna något om webb.</p>
-    </div>
-    <div class="bento">
-      <article class="cell cell--a glass reveal">
-        <i class="ph-light ph-paint-brush-broad" aria-hidden="true"></i>
-        <h3>En egen design</h3>
-        <p>En form som passar just ditt företag, med dina färger, din ton och dina bilder. Ingen mall som tusen andra använder.</p>
-      </article>
-      <article class="cell cell--b glass reveal">
-        <i class="ph-light ph-device-mobile" aria-hidden="true"></i>
-        <h3>Mobilen först</h3>
-        <p>De flesta besökare kommer från telefonen. Sidan byggs för dem från början.</p>
-      </article>
-      <article class="cell cell--c glass reveal">
-        <i class="ph-light ph-text-aa" aria-hidden="true"></i>
-        <h3>Text och bild</h3>
-        <p>Hjälp att formulera vad ni gör och att välja bilder som säger något.</p>
-      </article>
-      <article class="cell cell--d glass reveal">
-        <i class="ph-light ph-lightning" aria-hidden="true"></i>
-        <h3>Snabb och hittbar</h3>
-        <p>Lätt kod som laddar direkt, med grunderna för Google på plats.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="statement reveal" aria-label="Varje sida byggd för hand">
-  <p class="small">Varje sida</p>
-  <p class="big">Byggd för hand</p>
-  <hr>
-</section>
-
-<section class="section" id="sa-gar-det-till" aria-labelledby="steg">
-  <div class="wrap process">
-    <div class="section-head">
-      <h2 class="h2" id="steg">Så går det till</h2>
-      <p class="lead">Från första samtal till färdig sida. Du ser resultatet på riktigt innan något bestäms.</p>
-    </div>
-    <ol class="steps">
-      <li class="glass reveal"><div><h3>Vi pratar</h3><p>Du berättar om företaget, vilka ni vill nå och vad sidan ska göra. Har du en sida i dag går vi igenom vad som fungerar.</p></div></li>
-      <li class="glass reveal"><div><h3>Jag bygger ett förslag</h3><p>Du får en riktig sida att klicka runt i, med dina texter och bilder. Vi justerar tills den känns rätt.</p></div></li>
-      <li class="glass reveal"><div><h3>Sidan går live</h3><p>Jag lägger upp sidan, kopplar din adress och ser till att allt fungerar. Efteråt finns jag kvar om något behöver ändras.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-${contactPanel({ title: 'Hör av dig', text: 'Berätta kort om ditt företag, så återkommer jag så snart jag kan.' })}` + foot;
+` + foot;
 
 const arbeten = head({ title: 'Arbeten | Byggd av Max', desc: 'Hemsidor som jag har byggt åt företag.', path: 'arbeten' }) + `
 <section class="page-head">
