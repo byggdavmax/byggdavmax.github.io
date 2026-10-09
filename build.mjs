@@ -41,6 +41,24 @@ ${lamp ? `<script type="importmap">{"imports":{"three":"https://unpkg.com/three@
 <main id="innehall">
 `;
 
+const ways = ({ extra = '', card = false } = {}) => `<div class="ways${extra ? ' ' + extra : ''}">
+        <div class="way${card ? ' glass' : ''}">
+          <i class="ph-light ph-envelope-simple" aria-hidden="true"></i>
+          <div><span class="label">Mejla</span><a class="value" href="mailto:${MAIL}?subject=Ny%20hemsida">${MAIL}</a></div>
+          <div class="acts">
+            <button class="icon-btn" type="button" data-copy="${MAIL}" aria-label="Kopiera mejladress"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="way${card ? ' glass' : ''}">
+          <i class="ph-light ph-chat-circle-text" aria-hidden="true"></i>
+          <div><span class="label">Sms:a</span><a class="value" href="sms:${TEL}">${PHONE}</a></div>
+          <div class="acts">
+            <button class="icon-btn" type="button" data-copy="${PHONE}" aria-label="Kopiera telefonnummer"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <p class="call-note"><i class="ph-light ph-phone" aria-hidden="true"></i>Vill du hellre prata i telefon? Skicka ett sms först, så bokar vi in ett samtal.</p>
+      </div>`;
+
 const contactPanel = ({ title, text, h = 'h2' }) => `<section class="section" id="kontakt" aria-labelledby="kontakt-rubrik">
   <div class="wrap">
     <div class="contact glass reveal">
@@ -48,23 +66,7 @@ const contactPanel = ({ title, text, h = 'h2' }) => `<section class="section" id
         <${h} class="h2" id="kontakt-rubrik">${title}</${h}>
         <p class="lead">${text}</p>
       </div>
-      <div class="ways">
-        <div class="way">
-          <i class="ph-light ph-phone" aria-hidden="true"></i>
-          <div><span class="label">Ring eller sms:a</span><a class="value" href="tel:${TEL}">${PHONE}</a></div>
-          <div class="acts">
-            <a class="icon-btn" href="sms:${TEL}" aria-label="Skicka sms"><i class="ph-light ph-chat-circle-text" aria-hidden="true"></i></a>
-            <button class="icon-btn" type="button" data-copy="${PHONE}" aria-label="Kopiera telefonnummer"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
-          </div>
-        </div>
-        <div class="way">
-          <i class="ph-light ph-envelope-simple" aria-hidden="true"></i>
-          <div><span class="label">Mejla</span><a class="value" href="mailto:${MAIL}?subject=Ny%20hemsida">${MAIL}</a></div>
-          <div class="acts">
-            <button class="icon-btn" type="button" data-copy="${MAIL}" aria-label="Kopiera mejladress"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
-          </div>
-        </div>
-      </div>
+      ${ways()}
     </div>
   </div>
 </section>
@@ -74,7 +76,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <span>© ${year} Byggd av Max</span>
-    <nav aria-label="Sidfot"><a href="/referenser/">Referenser</a><a href="/kontakt/">Kontakt</a><a href="tel:${TEL}">${PHONE}</a></nav>
+    <nav aria-label="Sidfot"><a href="/referenser/">Referenser</a><a href="/kontakt/">Kontakt</a><a href="mailto:${MAIL}">Mejla</a></nav>
   </div>
 </footer>
 <script>
@@ -100,30 +102,14 @@ const foot = `</main>
 </html>
 `;
 
-const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag bygger hemsidor för företag. Ring ${PHONE} eller mejla ${MAIL}.`, path: 'home', lamp: true }) + `
+const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag bygger hemsidor för företag. Mejla ${MAIL} eller sms:a ${PHONE}.`, path: 'home', lamp: true }) + `
 <section class="hero hero--home">
   <div class="wrap">
     <div>
       <p class="eyebrow rise">Hemsidor för företag</p>
       <h1 class="rise d1">En hemsida som känns som <em>ditt</em> företag</h1>
-      <p class="lead rise d2">Vill du ha en egen? Ring, sms:a eller mejla, så hörs vi.</p>
-      <div class="ways ways--hero rise d3">
-        <div class="way glass">
-          <i class="ph-light ph-phone" aria-hidden="true"></i>
-          <div><span class="label">Ring eller sms:a</span><a class="value" href="tel:${TEL}">${PHONE}</a></div>
-          <div class="acts">
-            <a class="icon-btn" href="sms:${TEL}" aria-label="Skicka sms"><i class="ph-light ph-chat-circle-text" aria-hidden="true"></i></a>
-            <button class="icon-btn" type="button" data-copy="${PHONE}" aria-label="Kopiera telefonnummer"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
-          </div>
-        </div>
-        <div class="way glass">
-          <i class="ph-light ph-envelope-simple" aria-hidden="true"></i>
-          <div><span class="label">Mejla</span><a class="value" href="mailto:${MAIL}?subject=Ny%20hemsida">${MAIL}</a></div>
-          <div class="acts">
-            <button class="icon-btn" type="button" data-copy="${MAIL}" aria-label="Kopiera mejladress"><i class="ph-light ph-copy" aria-hidden="true"></i></button>
-          </div>
-        </div>
-      </div>
+      <p class="lead rise d2">Vill du ha en egen? Mejla eller sms:a, så hörs vi.</p>
+      ${ways({ extra: 'ways--hero rise d3', card: true })}
     </div>
     <div class="stage rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
       <div class="stage__fallback" aria-hidden="true"><span></span></div>
@@ -159,14 +145,14 @@ const arbeten = head({ title: 'Referenser | Byggd av Max', desc: 'Referenser: he
 </section>
 ` + foot;
 
-const kontakt = head({ title: 'Kontakt | Byggd av Max', desc: `Ring ${PHONE} eller mejla ${MAIL} om du vill ha en ny hemsida.`, path: 'kontakt' }) + `
+const kontakt = head({ title: 'Kontakt | Byggd av Max', desc: `Mejla ${MAIL} eller sms:a ${PHONE} om du vill ha en ny hemsida.`, path: 'kontakt' }) + `
 <section class="page-head">
   <div class="wrap">
     <h1 class="rise">Kontakt</h1>
-    <p class="lead rise d1">Ring, sms:a eller mejla. Berätta kort om ditt företag, så återkommer jag så snart jag kan.</p>
+    <p class="lead rise d1">Mejla eller sms:a och berätta kort om ditt företag, så återkommer jag så snart jag kan.</p>
   </div>
 </section>
-${contactPanel({ title: 'Enklast är att ringa', text: 'Eller skicka ett mejl om det passar bättre. Båda går direkt till mig.' }).replace('class="section"', 'class="section" style="padding-top:0"')}
+${contactPanel({ title: 'Mejl eller sms', text: 'Det är det smidigaste sättet att nå mig, och jag svarar så snart jag kan.' }).replace('class="section"', 'class="section" style="padding-top:0"')}
 <section class="section" aria-labelledby="med" style="padding-top:0">
   <div class="wrap split">
     <div class="section-head reveal">
