@@ -1,0 +1,15 @@
+/* Kvarterskrog – genererad från stilmallens tokens.json */
+:root {
+  --surface: #ffffff; --surface-alt: #f5f2ee; --ink: #303030; --ink-muted: #6b6560; --line: #e4ded7;
+  --night: #1c1816; --on-night: #f3ede6; --brass: #9a6a2c; --bar-teal: #3e5558; --glow: rgba(212, 163, 90, 0.32);
+  --font-display: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --font-serif: "PT Serif", Georgia, "Times New Roman", serif;
+  --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 40px; --space-5: 64px; --space-6: 96px;
+  --radius-none: 0; --radius-sm: 2px; --radius-round: 9999px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #171412; --surface-alt: #211d1a; --ink: #ece6df; --ink-muted: #a9a199; --line: #35302b;
+    --night: #2a2420; --brass: #d4a35a; --bar-teal: #7d9a9d; color-scheme: dark;
+  }
+}

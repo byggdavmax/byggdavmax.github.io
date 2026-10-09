@@ -5,77 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arbeten – Byggd av Max</title>
 <meta name="description" content="Exempel på hemsidor som jag har byggt åt företag.">
-<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#1c1816">
 <meta property="og:title" content="Arbeten – Byggd av Max">
 <meta property="og:description" content="Exempel på hemsidor som jag har byggt åt företag.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171615'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='38' fill='%23fbfaf7' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231c1816'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' letter-spacing='2' fill='%23f3ede6' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/kvarterskrog.css">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
-<header class="site-head">
-  <div class="wrap">
-    <a class="mark" href="/">Byggd av <b>Max</b></a>
-    <nav class="nav" aria-label="Huvudmeny">
+<div class="head-bar"><header class="kk-header">
+    <a class="kk-wordmark" href="/">Byggd av Max</a>
+    <nav class="kk-nav" aria-label="Huvudmeny">
       <a href="/arbeten/" aria-current="page">Arbeten</a>
-      <a class="opt" href="/#sa-funkar-det">Så går det till</a>
+      <a class="opt" href="/#sa-gar-det-till">Så går det till</a>
       <a href="/kontakt/">Kontakt</a>
-      <a class="btn" href="tel:+46709399896">Ring 070-939 98 96</a>
     </nav>
-  </div>
-</header>
+    <a class="kk-btn" href="tel:+46709399896">Ring mig</a>
+  </header></div>
 <main id="innehall">
 
-<section class="page-head">
-  <div class="wrap">
-    <p class="label rise">Arbeten</p>
-    <h1 class="rise rise-2">Sidor jag har byggt</h1>
-    <p class="lead rise rise-3">Här samlar jag hemsidor jag har gjort åt företag, med vad uppdraget var och hur resultatet blev.</p>
+<section class="band" aria-labelledby="arbeten-rubrik">
+  <div class="kk-section page-title">
+    <h1 class="kk-section__title rise" id="arbeten-rubrik">Arbeten</h1>
+    <p class="kk-section__sub rise rise-2">Sidor jag har byggt</p>
+    <p class="kk-section__text rise rise-3">Här samlar jag hemsidor jag har gjort åt företag, med vad uppdraget var och hur resultatet blev.</p>
   </div>
-</section>
-
-<section class="section" aria-labelledby="snart" style="padding-top:0;border-top:0">
   <div class="wrap">
     <div class="empty">
-      <div>
-        <h2 id="snart">De första exemplen kommer snart.</h2>
-        <p>Flera sidor är på gång just nu. Vill du se vad jag har gjort redan i dag? Hör av dig, så visar jag gärna exempel som passar ditt företag.</p>
-        <a class="link" href="/kontakt/">Be om exempel <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
       <div class="empty__frame" aria-hidden="true"><span>Under arbete</span></div>
+      <h2 class="kk-label">De första exemplen kommer snart</h2>
+      <p>Flera sidor är på gång just nu. Vill du se vad jag har gjort redan i dag? Hör av dig, så visar jag gärna exempel som passar ditt företag.</p>
+      <a class="kk-btn" href="/kontakt/">Be om exempel</a>
     </div>
 
     <!-- MALL för ett arbete. Kopiera, fyll i och ta bort .empty ovan när första arbetet läggs in.
     <article class="work">
-      <img class="work__shot" src="/img/arbeten/NAMN-desktop.webp" alt="Startsidan för NAMN" width="1440" height="900" loading="lazy">
-      <div class="work__meta">
-        <div><p class="label">Bransch · Ort · År</p><h2>Företagsnamn</h2></div>
-        <p>Vad uppdraget var och vad som blev bättre, i två meningar. <a class="link" href="https://..." target="_blank" rel="noopener">Besök sidan <span class="arrow" aria-hidden="true">→</span></a></p>
+      <img src="/img/arbeten/NAMN-desktop.webp" alt="Startsidan för NAMN" width="1440" height="900" loading="lazy">
+      <div class="kk-section">
+        <h2 class="kk-section__title">Företagsnamn</h2>
+        <p class="kk-section__sub">Bransch · Ort · År</p>
+        <p class="kk-section__text">Vad uppdraget var och vad som blev bättre, i två meningar.</p>
+        <a class="kk-btn" href="https://..." target="_blank" rel="noopener">Besök sidan</a>
       </div>
     </article>
     -->
   </div>
 </section>
 
-<section class="cta" aria-labelledby="cta-rubrik">
+<section class="band band--alt" id="kontakt" aria-labelledby="kontakt-rubrik">
+  <div class="kk-section">
+    <h2 class="kk-section__title" id="kontakt-rubrik">Vill du ha en egen?</h2>
+    <p class="kk-section__sub">Hör av dig så pratar vi</p>
+  </div>
   <div class="wrap">
-    <p class="label">Kontakt</p>
-    <h2 id="cta-rubrik">Har du ett företag som förtjänar en <em>bättre</em> hemsida?</h2>
-    <div class="cta__ways">
+    <div class="ways">
       <div class="way">
-        <p class="label">Ring eller sms:a</p>
+        <p class="kk-label">Telefon</p>
         <a class="big" href="tel:+46709399896">070-939 98 96</a>
-        <div class="small"><a href="sms:+46709399896">Skicka sms</a><button type="button" data-copy="070-939 98 96">Kopiera</button></div>
+        <div class="btn-row"><a class="kk-btn kk-btn--solid" href="tel:+46709399896">Ring</a><a class="kk-btn" href="sms:+46709399896">Sms</a><button class="kk-btn" type="button" data-copy="070-939 98 96">Kopiera</button></div>
       </div>
       <div class="way">
-        <p class="label">Mejla</p>
+        <p class="kk-label">Mejl</p>
         <a class="big" href="mailto:max.engellau@gmail.com?subject=Ny%20hemsida">max.engellau@gmail.com</a>
-        <div class="small"><a href="mailto:max.engellau@gmail.com?subject=Ny%20hemsida">Skriv ett mejl</a><button type="button" data-copy="max.engellau@gmail.com">Kopiera</button></div>
+        <div class="btn-row"><a class="kk-btn kk-btn--solid" href="mailto:max.engellau@gmail.com?subject=Ny%20hemsida">Mejla</a><button class="kk-btn" type="button" data-copy="max.engellau@gmail.com">Kopiera</button></div>
       </div>
     </div>
   </div>
@@ -83,14 +81,24 @@
 </main>
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Byggd av Max</span>
-    <nav aria-label="Sidfot"><a href="/arbeten/">Arbeten</a><a href="/kontakt/">Kontakt</a><a href="mailto:max.engellau@gmail.com">max.engellau@gmail.com</a></nav>
+    <div class="foot-grid">
+      <div>
+        <p class="kk-wordmark" style="margin-bottom:16px">Byggd av Max</p>
+        <p>Hemsidor för restauranger, gårdar, butiker och andra företag som vill synas på riktigt.</p>
+      </div>
+      <div>
+        <h3 class="kk-label">Kontakt</h3>
+        <ul><li><a href="tel:+46709399896">070-939 98 96</a></li><li><a href="mailto:max.engellau@gmail.com">max.engellau@gmail.com</a></li></ul>
+      </div>
+      <div>
+        <h3 class="kk-label">Sidor</h3>
+        <ul><li><a href="/">Start</a></li><li><a href="/arbeten/">Arbeten</a></li><li><a href="/kontakt/">Kontakt</a></li></ul>
+      </div>
+    </div>
   </div>
+  <div class="foot-base"><div class="wrap">© 2026 Byggd av Max</div></div>
 </footer>
 <script>
-  var h = document.querySelector('.site-head');
-  var onScroll = function () { h.classList.toggle('is-scrolled', window.scrollY > 8); };
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       var old = b.textContent;
