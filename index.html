@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Byggd av Max – hemsidor för företag</title>
+<meta name="description" content="Jag bygger lugna, snygga och snabba hemsidor för företag. Hör av dig på 070-939 98 96 eller max.engellau@gmail.com.">
+<meta name="theme-color" content="#1c1816">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%231c1816'/%3E%3Ctext x='24' y='33' font-family='Georgia,serif' font-size='26' fill='%23f3ede6' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Lugn redaktionell layout: mörk kvällsöppning, vit textdel, kontakt som tydligaste blocket */
+  :root {
+    --surface: #ffffff; --surface-alt: #f5f2ee; --ink: #303030; --ink-muted: #6b6560;
+    --line: #e4ded7; --night: #1c1816; --on-night: #f3ede6; --brass: #9a6a2c; --glow: rgba(212,163,90,.28);
+    --display: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --surface: #171412; --surface-alt: #211d1a; --ink: #ece6df; --ink-muted: #a9a199; --line: #35302b; --night: #0f0d0c; --brass: #d4a35a; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--surface); color: var(--ink); font: 17px/1.65 var(--serif); }
+  a { color: inherit; }
+  .caps { font-family: var(--display); text-transform: uppercase; }
+  .wrap { width: min(100% - 32px, 1040px); margin-inline: auto; }
+
+  /* Öppning */
+  .top { position: relative; background: var(--night); color: var(--on-night); overflow: hidden; }
+  .top::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 18% 0%, var(--glow), transparent 32%), radial-gradient(circle at 62% -6%, var(--glow), transparent 26%), radial-gradient(circle at 92% 8%, var(--glow), transparent 28%); }
+  .bar { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 28px; }
+  .wordmark { font-family: var(--serif); font-size: 20px; letter-spacing: .3em; text-transform: uppercase; text-decoration: none; }
+  .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border: 1px solid currentColor; font: 500 14px/1 var(--display); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .2s, color .2s; }
+  .top .btn:hover { background: var(--on-night); color: var(--night); }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .hero { position: relative; padding-block: clamp(64px, 12vw, 140px) clamp(64px, 10vw, 120px); max-width: 760px; }
+  .eyebrow { margin: 0 0 20px; font-size: 14px; letter-spacing: .32em; color: #d4a35a; }
+  h1 { margin: 0; font: 400 clamp(34px, 6vw, 60px)/1.12 var(--display); letter-spacing: .1em; text-transform: uppercase; text-wrap: balance; }
+  .lead { margin: 28px 0 0; font-size: clamp(18px, 2.2vw, 21px); line-height: 1.6; max-width: 34em; color: #ddd4c9; }
+
+  /* Vad jag gör */
+  section { padding-block: clamp(64px, 9vw, 104px); }
+  .head { text-align: center; margin-bottom: 48px; }
+  .head h2 { margin: 0; font: 500 clamp(24px, 3.4vw, 30px)/1.2 var(--display); letter-spacing: .12em; text-transform: uppercase; }
+  .head p { margin: 10px 0 0; font: 400 15px/1.5 var(--display); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; counter-reset: step; }
+  .steps li { border-top: 1px solid var(--line); padding-top: 22px; counter-increment: step; min-width: 0; }
+  .steps h3 { margin: 0 0 10px; font: 500 15px/1.4 var(--display); letter-spacing: .16em; text-transform: uppercase; }
+  .steps h3::before { content: counter(step) ". "; color: var(--brass); }
+  .steps p { margin: 0; color: var(--ink-muted); }
+
+  /* Kontakt */
+  .contact { background: var(--surface-alt); }
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 820px; margin-inline: auto; }
+  .card { background: var(--surface); border: 1px solid var(--line); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .card .label { margin: 0; font: 500 12px/1 var(--display); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-muted); }
+  .card .value { font: 400 clamp(20px, 2.6vw, 26px)/1.3 var(--serif); text-decoration: none; overflow-wrap: anywhere; }
+  .card .value:hover { color: var(--brass); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .actions .btn, .actions button { min-height: 40px; padding: 0 16px; font-size: 12px; }
+  .actions .btn:hover, .actions button:hover { background: var(--ink); color: var(--surface); }
+  button.btn { background: none; color: inherit; cursor: pointer; }
+  .note { text-align: center; margin: 36px auto 0; max-width: 34em; color: var(--ink-muted); }
+
+  footer { background: var(--night); color: #a9a199; padding-block: 28px; font: 500 13px/1.5 var(--display); letter-spacing: .14em; text-transform: uppercase; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 760px) {
+    .steps, .cards { grid-template-columns: 1fr; }
+    .bar .btn { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="wordmark" href="#">Byggd av Max</a>
+    <a class="btn" href="#kontakt">Kontakta mig</a>
+  </div>
+  <div class="wrap hero">
+    <p class="eyebrow caps">Hemsidor för företag</p>
+    <h1>En hemsida som känns som ditt företag</h1>
+    <p class="lead">Du har säkert hittat hit via en sida jag har byggt. Jag gör lugna, snygga och snabba hemsidor för restauranger, gårdar, butiker och andra lokala företag. Vill du ha en egen? Hör av dig.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <h2>Så går det till</h2>
+        <p>Från första samtal till färdig sida</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Vi pratar</h3><p>Du berättar om företaget och vad sidan ska göra. Jag tittar på din nuvarande sida om du har en.</p></li>
+        <li><h3>Jag bygger</h3><p>Du får se ett förslag på riktigt, med dina texter och bilder, och vi justerar tills det känns rätt.</p></li>
+        <li><h3>Sidan går live</h3><p>Jag lägger upp sidan, kopplar din adress och ser till att den fungerar bra i mobilen.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <div class="head">
+        <h2>Kontakta mig</h2>
+        <p>Ring, sms:a eller mejla</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <p class="label">Telefon</p>
+          <a class="value" href="tel:+46709399896">070-939 98 96</a>
+          <div class="actions">
+            <a class="btn" href="tel:+46709399896">Ring</a>
+            <a class="btn" href="sms:+46709399896">Sms</a>
+            <button class="btn" type="button" data-copy="070-939 98 96">Kopiera</button>
+          </div>
+        </div>
+        <div class="card">
+          <p class="label">Mejl</p>
+          <a class="value" href="mailto:max.engellau@gmail.com?subject=Hemsida">max.engellau@gmail.com</a>
+          <div class="actions">
+            <a class="btn" href="mailto:max.engellau@gmail.com?subject=Hemsida">Skicka mejl</a>
+            <button class="btn" type="button" data-copy="max.engellau@gmail.com">Kopiera</button>
+          </div>
+        </div>
+      </div>
+      <p class="note">Berätta gärna vad företaget heter och om du redan har en hemsida, så återkommer jag så snart jag kan.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Byggd av Max</span>
+    <span>Hemsidor för företag</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy'), old = b.textContent;
+      var done = function () { b.textContent = 'Kopierat'; setTimeout(function () { b.textContent = old; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+    });
+  });
+</script>
+</body>
+</html>
