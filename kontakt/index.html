@@ -15,7 +15,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
 <link rel="stylesheet" href="/css/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function () {
+  var r = document.documentElement; r.classList.add('js'); window.__marks = [];
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, seen = null;
+  try { seen = sessionStorage.getItem('bam-intro'); } catch (e) {}
+  if (false && !reduce && !seen) {
+    r.classList.add('intro', 'dark');
+    var done = function () { window.__marks.push(['done', Math.round(performance.now())]); if (!r.classList.contains('lit')) { r.classList.remove('dark'); r.classList.add('lit'); setTimeout(function () { r.classList.remove('intro'); }, 1800); } };
+    var fb = setTimeout(done, 2500);
+    window.__lampFailed = done;
+    window.__lampReady = function () { clearTimeout(fb); fb = setTimeout(done, 4000); };
+  } else { r.classList.add('lit'); }
+})();</script>
 
 </head>
 <body>

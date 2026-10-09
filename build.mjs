@@ -23,8 +23,22 @@ const head = ({ title, desc, path, lamp = false }) => `<!doctype html>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
 <link rel="stylesheet" href="/css/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function () {
+  var r = document.documentElement; r.classList.add('js'); window.__marks = [];
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, seen = null;
+  try { seen = sessionStorage.getItem('bam-intro'); } catch (e) {}
+  if (${lamp ? 'true' : 'false'} && !reduce && !seen) {
+    r.classList.add('intro', 'dark');
+    var done = function () { window.__marks.push(['done', Math.round(performance.now())]); if (!r.classList.contains('lit')) { r.classList.remove('dark'); r.classList.add('lit'); setTimeout(function () { r.classList.remove('intro'); }, 1800); } };
+    var fb = setTimeout(done, 2500);
+    window.__lampFailed = done;
+    window.__lampReady = function () { clearTimeout(fb); fb = setTimeout(done, 4000); };
+  } else { r.classList.add('lit'); }
+})();</script>
 ${lamp ? `<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/examples/jsm/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
+<link rel="modulepreload" href="/js/lamp/model.js">
+<link rel="modulepreload" href="/js/lamp.js">
 <script type="module" src="/js/lamp.js"></script>` : ''}
 </head>
 <body>
@@ -106,15 +120,16 @@ const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag b
 <section class="hero hero--home">
   <div class="wrap">
     <div class="intro" id="intro">
-      <p class="eyebrow rise">Hemsidor för företag</p>
-      <h1 class="rise d1">En hemsida som känns som <em>ditt</em> företag</h1>
-      <p class="lead rise d2">Vill du ha en egen? Mejla eller sms:a, så hörs vi.</p>
-      ${ways({ extra: 'ways--hero rise d3', card: true })}
+      <p class="eyebrow intro-item i1">Hemsidor för företag</p>
+      <h1 class="headline"><span class="line"><span>En hemsida</span></span> <span class="line"><span>som känns som</span></span> <span class="line"><span><em>ditt</em> företag</span></span></h1>
+      <p class="lead intro-item i2">Vill du ha en egen? Mejla eller sms:a, så hörs vi.</p>
+      ${ways({ extra: 'ways--hero intro-item i3', card: true })}
     </div>
-    <div class="stage rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
+    <div class="stage" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D. Dra i den för att få den att svänga, klicka för att släcka och tända.">
       <div class="stage__fallback" aria-hidden="true"><span></span></div>
+      <p class="lamp-hint" aria-hidden="true"><span class="hint-fine">Dra i lampan, klicka för att släcka</span><span class="hint-touch">Dra i lampan, tryck för att släcka</span></p>
     </div>
-    <a class="scroll-cue" href="#intro" aria-label="Skrolla ner till kontaktuppgifterna"><i class="ph-light ph-caret-down" aria-hidden="true"></i></a>
+    <a class="scroll-cue intro-item i4" href="#intro" aria-label="Skrolla ner till kontaktuppgifterna"><i class="ph-light ph-caret-down" aria-hidden="true"></i></a>
   </div>
 </section>
 ` + foot;
