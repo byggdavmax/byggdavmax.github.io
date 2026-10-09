@@ -105,7 +105,7 @@ const foot = `</main>
 const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag bygger hemsidor för företag. Mejla ${MAIL} eller sms:a ${PHONE}.`, path: 'home', lamp: true }) + `
 <section class="hero hero--home">
   <div class="wrap">
-    <div>
+    <div class="intro" id="intro">
       <p class="eyebrow rise">Hemsidor för företag</p>
       <h1 class="rise d1">En hemsida som känns som <em>ditt</em> företag</h1>
       <p class="lead rise d2">Vill du ha en egen? Mejla eller sms:a, så hörs vi.</p>
@@ -114,6 +114,7 @@ const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag b
     <div class="stage rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
       <div class="stage__fallback" aria-hidden="true"><span></span></div>
     </div>
+    <a class="scroll-cue" href="#intro" aria-label="Skrolla ner till kontaktuppgifterna"><i class="ph-light ph-caret-down" aria-hidden="true"></i></a>
   </div>
 </section>
 ` + foot;

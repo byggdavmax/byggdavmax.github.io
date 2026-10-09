@@ -223,3 +223,17 @@ img { max-width: 100%; display: block; }
 /* Notis om samtal via sms */
 .call-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 4px; font-size: 15px; line-height: 1.55; color: var(--muted); }
 .call-note i { font-size: 18px; margin-top: 2px; flex: none; }
+
+/* Mobil: lampan först, liten pil som visar att man ska skrolla */
+.scroll-cue { display: none; }
+@media (max-width: 960px) {
+  .hero--home { padding-top: 0; }
+  .hero--home .wrap { gap: 0; }
+  .hero--home .stage { order: -2; width: 100%; max-width: 420px; aspect-ratio: auto; height: calc(100svh - 68px - 72px); min-height: 380px; margin-top: 0; }
+  .scroll-cue { order: -1; display: grid; place-items: center; width: 48px; height: 48px; margin: 4px auto 40px; border: 1px solid var(--glass-line); border-radius: 50%; color: var(--ink); background: rgba(255, 255, 255, .55); font-size: 20px; }
+  .intro { scroll-margin-top: 24px; }
+}
+@media (max-width: 960px) and (prefers-reduced-motion: no-preference) {
+  .scroll-cue i { animation: cue 2.2s var(--ease) infinite; }
+  @keyframes cue { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(4px); } }
+}

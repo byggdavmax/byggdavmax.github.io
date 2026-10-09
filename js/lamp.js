@@ -49,7 +49,7 @@ function start() {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     // Lampans skärm (diameter 1) ska fylla cirka 74 % av bredden
-    const visibleW = 1.35, visibleH = Math.max(visibleW / camera.aspect, 1.6);
+    const visibleW = camera.aspect < 0.75 ? 1.18 : 1.35, visibleH = Math.max(visibleW / camera.aspect, 1.6);
     const dist = (visibleH / 2) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
     camera.position.set(0, 0.12, dist);
     camera.lookAt(target);
