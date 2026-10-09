@@ -114,7 +114,7 @@ const home = head({ title: 'Byggd av Max | Hemsidor för företag', desc: `Jag b
         <a class="btn btn--glass" href="/arbeten/">Se arbeten</a>
       </div>
     </div>
-    <div class="stage glass rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
+    <div class="stage rise d4" id="lamp-stage" role="img" aria-label="En mässingslampa i 3D som lyser varmt och svajar sakta">
       <div class="stage__fallback" aria-hidden="true"><span></span></div>
     </div>
   </div>

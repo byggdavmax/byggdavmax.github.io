@@ -89,7 +89,7 @@ img { max-width: 100%; display: block; }
 .hero h1 em { font-style: italic; font-weight: 400; color: var(--brass); padding-right: .08em; }
 .hero .btn-row { margin-top: 36px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
-.stage { position: relative; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; }
+.stage { position: relative; aspect-ratio: 3 / 4; max-width: 100%; margin-top: clamp(-120px, -8vw, -40px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%); mask-image: linear-gradient(to bottom, transparent, #000 14%); }
 .stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
 .stage__fallback { position: absolute; inset: 0; pointer-events: none; transition: opacity .8s; }
 .stage__fallback span { position: absolute; left: 50%; top: 66%; width: 70%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 196, 120, .55), rgba(212, 163, 90, .18) 38%, transparent 68%); }
